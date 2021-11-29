@@ -1,6 +1,13 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 {% load static %}
-{% block content %}
-<div>hello</div>
-{% endblock %}
+<script type="text/javascript" src="{% static '/ticketing.js' %}"></script>
+<h1>Ticketing System</h1>
+<div id = "searchresults"></div>
+</body>
+</html>

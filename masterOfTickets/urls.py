@@ -5,5 +5,6 @@ from masterOfTickets import views
 urlpatterns = [
 # ex: /
     path('', views.home, name='home'),
-    path('home', views.home, name='home')
+    path('home', views.home, name='home'),
+    path('showMeLists', views.showMeLists, name='showMeLists')
 ]

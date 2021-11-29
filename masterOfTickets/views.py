@@ -11,15 +11,11 @@ def showMeLists(request):
     """
     Calls zendesk ticketing system and returns json object containing all tickets for account
     """
-    response = requests.get("https://zccrivia.zendesk.com/api/v2/imports/tickets.json",
+    response = requests.get("https://zccrivia.zendesk.com/api/v2/tickets.json",
                             auth=(logins.zcc["username"], logins.zcc["password"]))
-    if response.status_code==200:
-        tickets = response.content
-        tickets = json.loads(tickets)
-        tickets = tickets["tickets"]
-        return JsonResponse(tickets)
-    else:
-        HttpResponse("Looks like Something has gone horribly wrong... Please try again later!")
+    tickets = response.content
+    tickets = json.loads(tickets)
+    return JsonResponse(tickets)
 
 def showMeIds(request, ticket_id):
     """
