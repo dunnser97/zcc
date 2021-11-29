@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static '/ticketing.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
 </head>
 <body>
-{% load static %}
-<script type="text/javascript" src="{% static '/ticketing.js' %}"></script>
 <h1>Ticketing System</h1>
 <div id = "searchresults"></div>
 <div id = "pagenums"></div>

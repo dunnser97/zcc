@@ -1,14 +1,16 @@
 function pagenum(page) {
-    console.log(page)
+
     fetch("/showMeLists").then(response => {
         return response.json();
     }).then(data => {
+        console.log(data)
         var key = 0;
         key = 0 + page*25;
         results_output = "<table><tr><th>Subject</th><th>Requester</th><th>Requested</th><th>priority</th></tr>"
         while ((key < 25 + page*25) && (key < data["tickets"].length)) {
             if (data["tickets"][key])
-            results_output += "<tr><td>" + data["tickets"][key]['subject'] + "</td><td>" + data["tickets"][key]['submitter_id'] + "</td><td>" + data["tickets"][key]['created_at'] + "</td><td>" + data["tickets"][key]['priority'] + "</td></tr>"
+            results_output += "<tr><td> <a href='/individual_ticket/" + data["tickets"][key]["id"]+"'>"  + data["tickets"][key]['subject'] + "</a></td><td>   " + data["tickets"][key]['submitter_id'] + "   </td><td>   " +
+                "" + data["tickets"][key]['created_at'] + "   </td><td>   " + data["tickets"][key]['priority'] + "</td></tr>"
             key += 1;
         }
         results_output += "</table>"
@@ -19,5 +21,13 @@ function pagenum(page) {
             pageamt_output += "<button onclick='pagenum(" + (i) + ")'>" + (i+1) + "</button>"
         }
         document.getElementById("pagenums").innerHTML = pageamt_output;
+    })
+}
+
+function individual_page(ticket_id) {
+    fetch(`/showMeIds/${ticket_id}`).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data)
     })
 }
